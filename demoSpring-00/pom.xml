@@ -2,35 +2,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>demoSpring-00</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demoSpring-00-玩弄测试</name>
+    <description>demoSpring-00 入口项目</description>
     <parent>
         <groupId>com.example</groupId>
         <artifactId>demoSpring</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>demoSpring-00</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>demoSpring-00-玩弄测试</name>
-    <description>demoSpring-00</description>
-
     <properties>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.example</groupId>
+            <artifactId>demoSpring-01</artifactId>
         </dependency>
-        <!--<dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>-->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>demoSpring-02</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>demoSpring-03</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -50,10 +54,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.0.0</version>
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
+                <!--<dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit-platform</artifactId>
+                        <version>2.22.2</version>
+                    </dependency>
+                </dependencies>-->
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demospring02.dao.TacoOrderDao">
+  <resultMap id="BaseResultMap" type="com.example.demospring02.entity.TacoOrder">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="delivery_Name" jdbcType="VARCHAR" property="delivery_Name" />
+    <result column="delivery_Street" jdbcType="VARCHAR" property="delivery_Street" />
+    <result column="delivery_City" jdbcType="VARCHAR" property="delivery_City" />
+    <result column="delivery_State" jdbcType="VARCHAR" property="delivery_State" />
+    <result column="delivery_Zip" jdbcType="VARCHAR" property="delivery_Zip" />
+    <result column="cc_number" jdbcType="VARCHAR" property="cc_number" />
+    <result column="cc_expiration" jdbcType="VARCHAR" property="cc_expiration" />
+    <result column="cc_cvv" jdbcType="VARCHAR" property="cc_cvv" />
+    <result column="placed_at" jdbcType="TIMESTAMP" property="placed_at" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, delivery_Name, delivery_Street, delivery_City, delivery_State, delivery_Zip, 
+    cc_number, cc_expiration, cc_cvv, placed_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from taco_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from taco_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demospring02.entity.TacoOrder" useGeneratedKeys="true">
+    insert into taco_order (delivery_Name, delivery_Street, delivery_City, 
+      delivery_State, delivery_Zip, cc_number, 
+      cc_expiration, cc_cvv, placed_at
+      )
+    values (#{delivery_Name,jdbcType=VARCHAR}, #{delivery_Street,jdbcType=VARCHAR}, #{delivery_City,jdbcType=VARCHAR}, 
+      #{delivery_State,jdbcType=VARCHAR}, #{delivery_Zip,jdbcType=VARCHAR}, #{cc_number,jdbcType=VARCHAR}, 
+      #{cc_expiration,jdbcType=VARCHAR}, #{cc_cvv,jdbcType=VARCHAR}, #{placed_at,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.demospring02.entity.TacoOrder" useGeneratedKeys="true">
+    insert into taco_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="delivery_Name != null">
+        delivery_Name,
+      </if>
+      <if test="delivery_Street != null">
+        delivery_Street,
+      </if>
+      <if test="delivery_City != null">
+        delivery_City,
+      </if>
+      <if test="delivery_State != null">
+        delivery_State,
+      </if>
+      <if test="delivery_Zip != null">
+        delivery_Zip,
+      </if>
+      <if test="cc_number != null">
+        cc_number,
+      </if>
+      <if test="cc_expiration != null">
+        cc_expiration,
+      </if>
+      <if test="cc_cvv != null">
+        cc_cvv,
+      </if>
+      <if test="placed_at != null">
+        placed_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="delivery_Name != null">
+        #{delivery_Name,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_Street != null">
+        #{delivery_Street,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_City != null">
+        #{delivery_City,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_State != null">
+        #{delivery_State,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_Zip != null">
+        #{delivery_Zip,jdbcType=VARCHAR},
+      </if>
+      <if test="cc_number != null">
+        #{cc_number,jdbcType=VARCHAR},
+      </if>
+      <if test="cc_expiration != null">
+        #{cc_expiration,jdbcType=VARCHAR},
+      </if>
+      <if test="cc_cvv != null">
+        #{cc_cvv,jdbcType=VARCHAR},
+      </if>
+      <if test="placed_at != null">
+        #{placed_at,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demospring02.entity.TacoOrder">
+    update taco_order
+    <set>
+      <if test="delivery_Name != null">
+        delivery_Name = #{delivery_Name,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_Street != null">
+        delivery_Street = #{delivery_Street,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_City != null">
+        delivery_City = #{delivery_City,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_State != null">
+        delivery_State = #{delivery_State,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery_Zip != null">
+        delivery_Zip = #{delivery_Zip,jdbcType=VARCHAR},
+      </if>
+      <if test="cc_number != null">
+        cc_number = #{cc_number,jdbcType=VARCHAR},
+      </if>
+      <if test="cc_expiration != null">
+        cc_expiration = #{cc_expiration,jdbcType=VARCHAR},
+      </if>
+      <if test="cc_cvv != null">
+        cc_cvv = #{cc_cvv,jdbcType=VARCHAR},
+      </if>
+      <if test="placed_at != null">
+        placed_at = #{placed_at,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demospring02.entity.TacoOrder">
+    update taco_order
+    set delivery_Name = #{delivery_Name,jdbcType=VARCHAR},
+      delivery_Street = #{delivery_Street,jdbcType=VARCHAR},
+      delivery_City = #{delivery_City,jdbcType=VARCHAR},
+      delivery_State = #{delivery_State,jdbcType=VARCHAR},
+      delivery_Zip = #{delivery_Zip,jdbcType=VARCHAR},
+      cc_number = #{cc_number,jdbcType=VARCHAR},
+      cc_expiration = #{cc_expiration,jdbcType=VARCHAR},
+      cc_cvv = #{cc_cvv,jdbcType=VARCHAR},
+      placed_at = #{placed_at,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

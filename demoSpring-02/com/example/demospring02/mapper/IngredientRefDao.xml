@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demospring02.dao.IngredientRefDao">
+  <resultMap id="BaseResultMap" type="com.example.demospring02.entity.IngredientRef">
+    <result column="ingredient" jdbcType="VARCHAR" property="ingredient" />
+    <result column="taco" jdbcType="VARCHAR" property="taco" />
+    <result column="taco_key" jdbcType="VARCHAR" property="tacoKey" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demospring02.entity.IngredientRef">
+    insert into ingredient_ref (ingredient, taco, taco_key
+      )
+    values (#{ingredient,jdbcType=VARCHAR}, #{taco,jdbcType=VARCHAR}, #{tacoKey,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demospring02.entity.IngredientRef">
+    insert into ingredient_ref
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ingredient != null">
+        ingredient,
+      </if>
+      <if test="taco != null">
+        taco,
+      </if>
+      <if test="tacoKey != null">
+        taco_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ingredient != null">
+        #{ingredient,jdbcType=VARCHAR},
+      </if>
+      <if test="taco != null">
+        #{taco,jdbcType=VARCHAR},
+      </if>
+      <if test="tacoKey != null">
+        #{tacoKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
